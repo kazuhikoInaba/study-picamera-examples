@@ -5,13 +5,6 @@ import time
 import numpy as np
 import cv2
 
-#FONT_HERSHEY_SIMPLEX, FONT_HERSHEY_PLAIN, FONT_HERSHEY_DUPLEX, 
-#FONT_HERSHEY_COMPLEX, FONT_HERSHEY_TRIPLEX, FONT_HERSHEY_COMPLEX_SMALL, 
-#FONT_HERSHEY_SCRIPT_SIMPLEX, FONT_HERSHEY_SCRIPT_COMPLEX
-
-
-#font = cv2.FONT_HERSHEY_SIMPLEX
-#cv2.putText(img,'OpenCV',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
 
 
 class FaceDetector(object):
@@ -39,8 +32,7 @@ class FaceDetector(object):
 
     def process_image(self, frame):
         # opencvでframe(カラー画像)をグレースケールに変換
-        #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-   blue = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
         # 上記でグレースケールに変換したものをインスタンス化した顔分類器の
         # detectMultiScaleメソッドで処理し、認識した顔の座標情報を取得する
@@ -49,7 +41,7 @@ class FaceDetector(object):
         # 取得した座標情報を元に、cv2.rectangleを使ってframe上に
         # 顔の位置を描画する
         for (x,y,w,h) in faces:
-            cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,255,0),2)
 
         # frameを戻り値として返す
         return frame
