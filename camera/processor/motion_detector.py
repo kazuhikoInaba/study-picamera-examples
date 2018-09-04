@@ -39,7 +39,9 @@ class MotionDetector(object):
             return frame
 
         cv2.accumulateWeighted(gray, self.avg, 0.5)
-        frameDelta = cv2.absdiff(gray, cv2.convertScaleAbs(self.avg))
+        #frameDelta = cv2.absdiff(gray, cv2.convertScaleAbs(self.avg))
+        frameDelta = cv2.absdiff(blue, cv2.convertScaleAbs(self.avg))
+
         thresh = cv2.threshold(frameDelta, 5, 255, cv2.THRESH_BINARY)[1]
         thresh = cv2.dilate(thresh, None, iterations=2)
 
