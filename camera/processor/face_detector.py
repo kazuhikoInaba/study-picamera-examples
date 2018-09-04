@@ -39,8 +39,9 @@ class FaceDetector(object):
 
     def process_image(self, frame):
         # opencvでframe(カラー画像)をグレースケールに変換
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+        #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+   blue = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        
         # 上記でグレースケールに変換したものをインスタンス化した顔分類器の
         # detectMultiScaleメソッドで処理し、認識した顔の座標情報を取得する
         faces = self.face_cascade.detectMultiScale(gray, 1.3, 3)
